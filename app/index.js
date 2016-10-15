@@ -1,5 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Form = require('./components/form');
 
 class Helloworld extends React.Component {
   render () {
@@ -8,6 +9,6 @@ class Helloworld extends React.Component {
 }
 
 ReactDOM.render(
-  <Helloworld />,
+  <Form />,
   document.getElementById('app')
 )

@@ -63,6 +63,7 @@
 
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(35);
+	var Form = __webpack_require__(173);
 
 	var Helloworld = function (_React$Component) {
 	  _inherits(Helloworld, _React$Component);
@@ -87,7 +88,7 @@
 	  return Helloworld;
 	}(React.Component);
 
-	ReactDOM.render(React.createElement(Helloworld, null), document.getElementById('app'));
+	ReactDOM.render(React.createElement(Form, null), document.getElementById('app'));
 
 /***/ },
 /* 2 */
@@ -21455,6 +21456,100 @@
 
 	module.exports = ReactDOMNullInputValuePropHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(2);
+
+	var Timer = function (_React$Component) {
+	  _inherits(Timer, _React$Component);
+
+	  function Timer(props) {
+	    _classCallCheck(this, Timer);
+
+	    var _this = _possibleConstructorReturn(this, (Timer.__proto__ || Object.getPrototypeOf(Timer)).call(this, props));
+
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	    _this.handleSecondsChange = _this.handleSecondsChange.bind(_this);
+	    _this.handleMinutesChange = _this.handleMinutesChange.bind(_this);
+	    _this.state = {
+	      minutes: "",
+	      seconds: "",
+	      toCountDown: 0
+	    };
+	    return _this;
+	  }
+
+	  _createClass(Timer, [{
+	    key: "handleSubmit",
+	    value: function handleSubmit(event) {
+	      this.setState({
+	        toCountDown: Number.parseInt(this.state.seconds) + 60 * Number.parseInt(this.state.seconds)
+	      });
+	    }
+	  }, {
+	    key: "handleSecondsChange",
+	    value: function handleSecondsChange(event) {
+	      this.setState({
+	        seconds: event.target.value
+	      });
+	    }
+	  }, {
+	    key: "handleMinutesChange",
+	    value: function handleMinutesChange(event) {
+	      this.setState({
+	        minutes: event.target.value
+	      });
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      return React.createElement(
+	        "form",
+	        null,
+	        React.createElement("input", { type: "text", name: "minute", value: this.state.minutes, placeholder: "Minute",
+	          onChange: this.handleMinutesChange }),
+	        React.createElement("input", { type: "text", name: "second", value: this.state.seconds, placeholder: "Second",
+	          onChange: this.handleSecondsChange }),
+	        React.createElement(
+	          "a",
+	          { className: "btn btn-primary", onClick: this.handleSubmit },
+	          "Submit"
+	        ),
+	        React.createElement(
+	          "p",
+	          null,
+	          "Minute: ",
+	          this.state.minutes,
+	          " and second: ",
+	          this.state.seconds
+	        ),
+	        React.createElement(
+	          "p",
+	          null,
+	          "Total seconds for count down: ",
+	          this.state.toCountDown
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Timer;
+	}(React.Component);
+
+	module.exports = Timer;
 
 /***/ }
 /******/ ]);
