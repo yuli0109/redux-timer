@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "production": "webpack -p"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
@@ -12,6 +13,19 @@
     "ejs": "~2.4.1",
     "express": "~4.13.4",
     "morgan": "~1.7.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "del": "^2.2.2",
+    "html-webpack-plugin": "^2.22.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-stream": "^3.2.0"
   }
 }
