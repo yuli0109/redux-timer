@@ -59,13 +59,13 @@ class Timer extends React.Component {
   }
   render (){
     return <div>
-      <form>
-        <input type="text" name="minute" value={this.state.minutes} placeholder="Minute"
+      <form className="form-inline">
+        <input className="form-control" type="text" name="minute" value={this.state.minutes} placeholder="Minute"
           onChange={this.handleMinutesChange} onFocus={this.clearMinute}/>
-        <input type="text" name="second" value={this.state.seconds} placeholder="Second"
+        <input className="form-control" type="text" name="second" value={this.state.seconds} placeholder="Second"
           onChange={this.handleSecondsChange} onFocus={this.clearSecond}/>
         <a className="btn btn-primary" onClick={this.handleSubmit}>Submit</a>
-        <p>Minute: {this.state.minutes} and second: {this.state.seconds}</p>
+        <p>{this.state.minutes} minutes and {this.state.seconds} seconds</p>
         <p>Total seconds for count down: {this.state.toCountDown}</p>
       </form>
       <AnalogDisplay countRemain={this.state.toCountDown}/>

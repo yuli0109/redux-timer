@@ -21563,10 +21563,10 @@
 	        null,
 	        _react2.default.createElement(
 	          'form',
-	          null,
-	          _react2.default.createElement('input', { type: 'text', name: 'minute', value: this.state.minutes, placeholder: 'Minute',
+	          { className: 'form-inline' },
+	          _react2.default.createElement('input', { className: 'form-control', type: 'text', name: 'minute', value: this.state.minutes, placeholder: 'Minute',
 	            onChange: this.handleMinutesChange, onFocus: this.clearMinute }),
-	          _react2.default.createElement('input', { type: 'text', name: 'second', value: this.state.seconds, placeholder: 'Second',
+	          _react2.default.createElement('input', { className: 'form-control', type: 'text', name: 'second', value: this.state.seconds, placeholder: 'Second',
 	            onChange: this.handleSecondsChange, onFocus: this.clearSecond }),
 	          _react2.default.createElement(
 	            'a',
@@ -21576,10 +21576,10 @@
 	          _react2.default.createElement(
 	            'p',
 	            null,
-	            'Minute: ',
 	            this.state.minutes,
-	            ' and second: ',
-	            this.state.seconds
+	            ' minutes and ',
+	            this.state.seconds,
+	            ' seconds'
 	          ),
 	          _react2.default.createElement(
 	            'p',
@@ -21653,7 +21653,7 @@
 	  };
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'center-block' },
+	    null,
 	    _react2.default.createElement(
 	      'div',
 	      { style: dialStyle },
