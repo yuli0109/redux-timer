@@ -21461,9 +21461,19 @@
 /* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _clock = __webpack_require__(174);
+
+	var _clock2 = _interopRequireDefault(_clock);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -21471,85 +21481,178 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var React = __webpack_require__(2);
-
 	var Timer = function (_React$Component) {
 	  _inherits(Timer, _React$Component);
 
 	  function Timer(props) {
 	    _classCallCheck(this, Timer);
 
-	    var _this = _possibleConstructorReturn(this, (Timer.__proto__ || Object.getPrototypeOf(Timer)).call(this, props));
+	    var _this2 = _possibleConstructorReturn(this, (Timer.__proto__ || Object.getPrototypeOf(Timer)).call(this, props));
 
-	    _this.handleSubmit = _this.handleSubmit.bind(_this);
-	    _this.handleSecondsChange = _this.handleSecondsChange.bind(_this);
-	    _this.handleMinutesChange = _this.handleMinutesChange.bind(_this);
-	    _this.state = {
-	      minutes: "",
-	      seconds: "",
+	    _this2.handleSubmit = _this2.handleSubmit.bind(_this2);
+	    _this2.handleSecondsChange = _this2.handleSecondsChange.bind(_this2);
+	    _this2.handleMinutesChange = _this2.handleMinutesChange.bind(_this2);
+	    _this2.clearMinute = _this2.clearMinute.bind(_this2);
+	    _this2.clearSecond = _this2.clearSecond.bind(_this2);
+	    _this2.state = {
+	      minutes: "0",
+	      seconds: "0",
 	      toCountDown: 0
 	    };
-	    return _this;
+	    return _this2;
 	  }
 
 	  _createClass(Timer, [{
-	    key: "handleSubmit",
-	    value: function handleSubmit(event) {
-	      this.setState({
-	        toCountDown: Number.parseInt(this.state.seconds) + 60 * Number.parseInt(this.state.seconds)
-	      });
+	    key: 'startCount',
+	    value: function startCount() {
+	      var _this = this;
+	      var clearCount = setInterval(function () {
+	        _this.setState({
+	          toCountDown: --_this.state.toCountDown
+	        });
+	        if (_this.state.toCountDown <= 0) clearInterval(clearCount);
+	      }, 1000);
 	    }
 	  }, {
-	    key: "handleSecondsChange",
+	    key: 'handleSubmit',
+	    value: function handleSubmit(event) {
+	      this.setState({
+	        toCountDown: Number.parseInt(this.state.seconds) + 60 * Number.parseInt(this.state.minutes)
+	      });
+	      this.startCount();
+	    }
+	  }, {
+	    key: 'handleSecondsChange',
 	    value: function handleSecondsChange(event) {
 	      this.setState({
 	        seconds: event.target.value
 	      });
 	    }
 	  }, {
-	    key: "handleMinutesChange",
+	    key: 'handleMinutesChange',
 	    value: function handleMinutesChange(event) {
 	      this.setState({
 	        minutes: event.target.value
 	      });
 	    }
 	  }, {
-	    key: "render",
+	    key: 'clearMinute',
+	    value: function clearMinute(event) {
+	      this.setState({
+	        minutes: ""
+	      });
+	    }
+	  }, {
+	    key: 'clearSecond',
+	    value: function clearSecond(event) {
+	      this.setState({
+	        seconds: ""
+	      });
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
-	      return React.createElement(
-	        "form",
+	      return _react2.default.createElement(
+	        'div',
 	        null,
-	        React.createElement("input", { type: "text", name: "minute", value: this.state.minutes, placeholder: "Minute",
-	          onChange: this.handleMinutesChange }),
-	        React.createElement("input", { type: "text", name: "second", value: this.state.seconds, placeholder: "Second",
-	          onChange: this.handleSecondsChange }),
-	        React.createElement(
-	          "a",
-	          { className: "btn btn-primary", onClick: this.handleSubmit },
-	          "Submit"
-	        ),
-	        React.createElement(
-	          "p",
+	        _react2.default.createElement(
+	          'form',
 	          null,
-	          "Minute: ",
-	          this.state.minutes,
-	          " and second: ",
-	          this.state.seconds
+	          _react2.default.createElement('input', { type: 'text', name: 'minute', value: this.state.minutes, placeholder: 'Minute',
+	            onChange: this.handleMinutesChange, onFocus: this.clearMinute }),
+	          _react2.default.createElement('input', { type: 'text', name: 'second', value: this.state.seconds, placeholder: 'Second',
+	            onChange: this.handleSecondsChange, onFocus: this.clearSecond }),
+	          _react2.default.createElement(
+	            'a',
+	            { className: 'btn btn-primary', onClick: this.handleSubmit },
+	            'Submit'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Minute: ',
+	            this.state.minutes,
+	            ' and second: ',
+	            this.state.seconds
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Total seconds for count down: ',
+	            this.state.toCountDown
+	          )
 	        ),
-	        React.createElement(
-	          "p",
-	          null,
-	          "Total seconds for count down: ",
-	          this.state.toCountDown
-	        )
+	        _react2.default.createElement(_clock2.default, { countRemain: this.state.toCountDown })
 	      );
 	    }
 	  }]);
 
 	  return Timer;
-	}(React.Component);
+	}(_react2.default.Component);
 
 	module.exports = Timer;
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var AnalogDisplay = function AnalogDisplay(props) {
+	  var countRemain = props.countRemain;
+	  var seconds = countRemain % 60;
+	  var minutes = Math.floor(countRemain / 60);
+	  var dialStyle = {
+	    position: 'relative',
+	    top: 0,
+	    left: 0,
+	    width: 200,
+	    height: 200,
+	    borderRadius: 20000,
+	    borderStyle: 'solid',
+	    borderColor: 'black'
+	  };
+	  var secondHandStyle = {
+	    position: 'relative',
+	    top: 100,
+	    left: 100,
+	    border: '1px solid red',
+	    width: '40%',
+	    height: 1,
+	    transform: 'rotate(' + (seconds / 60 * 360 - 90) + 'deg)',
+	    transformOrigin: '0% 0%',
+	    backgroundColor: 'red'
+	  };
+	  var minuteHandStyle = {
+	    position: 'relative',
+	    top: 100,
+	    left: 100,
+	    border: '1px solid grey',
+	    width: '40%',
+	    height: 3,
+	    transform: 'rotate(' + (minutes / 60 * 360 - 90) + 'deg)',
+	    transformOrigin: '0% 0%',
+	    backgroundColor: 'grey'
+	  };
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'div',
+	      { style: dialStyle },
+	      _react2.default.createElement('div', { style: secondHandStyle }),
+	      _react2.default.createElement('div', { style: minuteHandStyle })
+	    )
+	  );
+	};
+
+	module.exports = AnalogDisplay;
 
 /***/ }
 /******/ ]);
