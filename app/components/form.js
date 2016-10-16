@@ -13,7 +13,8 @@ class Timer extends React.Component {
     this.state = {
       minutes: "0",
       seconds: "0",
-      toCountDown: 0
+      toCountDown: 0,
+      bam: 'hidden'
     }
   }
   startCount() {
@@ -22,7 +23,12 @@ class Timer extends React.Component {
       _this.setState({
         toCountDown: --_this.state.toCountDown
       })
-      if (_this.state.toCountDown <= 0) clearInterval(clearCount)
+      if (_this.state.toCountDown <= 0) {
+        clearInterval(clearCount)
+        _this.setState({
+          bam: 'show'
+        })
+      }
     }, 1000)
   }
   handleSubmit(event) {
@@ -63,6 +69,7 @@ class Timer extends React.Component {
         <p>Total seconds for count down: {this.state.toCountDown}</p>
       </form>
       <AnalogDisplay countRemain={this.state.toCountDown}/>
+      <h1 className={this.state.bam}>BAM!</h1>
     </div>
   }
 }

@@ -21497,7 +21497,8 @@
 	    _this2.state = {
 	      minutes: "0",
 	      seconds: "0",
-	      toCountDown: 0
+	      toCountDown: 0,
+	      bam: 'hidden'
 	    };
 	    return _this2;
 	  }
@@ -21510,7 +21511,12 @@
 	        _this.setState({
 	          toCountDown: --_this.state.toCountDown
 	        });
-	        if (_this.state.toCountDown <= 0) clearInterval(clearCount);
+	        if (_this.state.toCountDown <= 0) {
+	          clearInterval(clearCount);
+	          _this.setState({
+	            bam: 'show'
+	          });
+	        }
 	      }, 1000);
 	    }
 	  }, {
@@ -21582,7 +21588,12 @@
 	            this.state.toCountDown
 	          )
 	        ),
-	        _react2.default.createElement(_clock2.default, { countRemain: this.state.toCountDown })
+	        _react2.default.createElement(_clock2.default, { countRemain: this.state.toCountDown }),
+	        _react2.default.createElement(
+	          'h1',
+	          { className: this.state.bam },
+	          'BAM!'
+	        )
 	      );
 	    }
 	  }]);
@@ -21642,7 +21653,7 @@
 	  };
 	  return _react2.default.createElement(
 	    'div',
-	    null,
+	    { className: 'center-block' },
 	    _react2.default.createElement(
 	      'div',
 	      { style: dialStyle },
