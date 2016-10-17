@@ -1,6 +1,9 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Form = require('./components/form');
+var Navbar = require('./containers/navBar');
+
+import {Router, Route, Link, browserHistory} from 'react-router'
 
 class Helloworld extends React.Component {
   render () {
@@ -9,6 +12,11 @@ class Helloworld extends React.Component {
 }
 
 ReactDOM.render(
-  <Form />,
-  document.getElementById('app')
+  <Router history={browserHistory}>
+    <Route path='/' component={Navbar}>
+      <Route path='/form' component={Form}/>
+      <Route path='/hello' component={Helloworld}/>
+    </Route>
+  </Router>
+  , document.getElementById('app')
 )
