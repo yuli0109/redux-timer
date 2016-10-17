@@ -1,5 +1,5 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
 import MyRouter from './config/router';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
