@@ -3,17 +3,17 @@
 ### Intallation
  1. Fork & clone from this repo.  
  2. To intall all dependencies:  
-```
-npm install 
-```  
+	```
+	npm install 
+	```  
 3. Bundle the scripts:  
-```
-gulp  
-```  
+	```
+	gulp  
+	```  
 4. Setup the server on localhost port 3000  
-```
-nodemon 
-```  
+	```
+	nodemon 
+	```  
 5. Open up your browser and type
   ```
   localhost:3000
