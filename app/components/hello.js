@@ -1,5 +1,6 @@
 import React from 'react';
 import Student from './student';
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 var studentList = [{id: 1, name: 'std1'}, {id: 2, name: 'std2'}, {id: 3, name: 'std3'}];
 
@@ -10,7 +11,6 @@ class Helloworld extends React.Component {
     this.state = {
       studentList: []
     }
-
   }
   handleNext(){
     this.setState({
@@ -18,14 +18,18 @@ class Helloworld extends React.Component {
     })
   }
   render () {
-    return <div> Hello World
-      <Student name={'Puppy'}/>
+    return <div>
+      <button onClick={this.handleNext}>Add</button>
+      <ReactCSSTransitionGroup
+          transitionName={{enter: "animated", enterActive: "rotateIn", leave: "animated",leaveActive: "tada"}}
+          transitionEnterTimeout={2000}
+          transitionLeaveTimeout={300}>
       {
-        this.state.studentList.reverse().map((std) => (
+        this.state.studentList.map((std) => (
           <Student key={std.id} name={std.name}/>
         ))
       }
-      <button onClick={this.handleNext}>Add</button>
+      </ReactCSSTransitionGroup>
     </div>
   }
 }
