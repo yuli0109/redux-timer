@@ -1,23 +1,20 @@
 ## Redux Timer and Name Picker App
 
 ### Intallation
-* Fork & clone from this repo
-* ```
-  npm install 
-  ```
-  To intall all dependencies
-  
-* ```
-  gulp  
-  ```
-  optional if you does not make any changes to the App
- 
-* ```
-  nodemon 
-  ```
-  Setup the server on localhost port 3000
-  
-* Open up your browser and type
+ 1. Fork & clone from this repo.  
+ 2. To intall all dependencies:  
+```
+npm install 
+```  
+3. Bundle the scripts:  
+```
+gulp  
+```  
+4. Setup the server on localhost port 3000  
+```
+nodemon 
+```  
+5. Open up your browser and type
   ```
   localhost:3000
   ```
