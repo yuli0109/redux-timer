@@ -58,7 +58,7 @@ class Timer extends React.Component {
     })
   }
   render (){
-    return <div>
+    return <div className="clock-compt">
       <form className="form-inline">
         <input className="form-control" type="text" name="minute" value={this.state.minutes} placeholder="Minute"
           onChange={this.handleMinutesChange} onFocus={this.clearMinute}/>
